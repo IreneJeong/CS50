@@ -11,14 +11,23 @@ int main(void)
     int ss = get_start_size();
     int es = get_end_size();
     int y = 0;
+
     //Calculate number of years until we reach threshold & print number of years
-    do
+    if (es == ss)
     {
-        ss = ss + (ss / 3) - (ss / 4);
-        y++;
+        printf("Years: 0\n");
     }
-    while (ss < es);
-    printf("Years : %i\n", y);
+    else
+    {
+        do
+        {
+            ss = ss + (ss / 3) - (ss / 4);
+            y++;
+        }
+        while (ss < es);
+
+        printf("Years: %i\n", y);
+    }
 }
 
 //Prompt for start size
@@ -38,6 +47,6 @@ int get_end_size(void)
     {
         e = get_int("End size?: ");
     }
-    while (e <= s);
+    while (e < s);
     return e;
 }
